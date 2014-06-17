@@ -22,8 +22,13 @@
 *.x86_64
 *.hex
 
+# Eclipse specific
 .settings
 Debug
 Release
 .cproject
 .project
+
+#Intellij specific
+.idea
+
