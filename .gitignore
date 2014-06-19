@@ -31,4 +31,10 @@ Release
 
 #Intellij specific
 .idea
+.MF
+META-INF
+out
+*.iml
 
+#Java specific
+*.class
