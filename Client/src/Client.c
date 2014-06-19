@@ -64,7 +64,7 @@ char* getSystemData()
 	const int length = snprintf(NULL, 0, "%ld", processorsOnline);
 	const int length2 = snprintf(NULL, 0, "%lu", usableMemory);
 	char* buf;
-	const int length3 = strlen("{\"processors\":,\"memory\":");
+	const int length3 = strlen("{\"processors\":,\"memory\":}");
 
 	buf = malloc(length + length2 + length3 + 1);
 	snprintf(buf, length + length2 + + length3 + 1, "{\"processors\":%ld,\"memory\":%lu}", processorsOnline, usableMemory);
