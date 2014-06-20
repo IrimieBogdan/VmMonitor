@@ -4,6 +4,6 @@
 public class Client {
     public static void main(String[] args) {
         VmManager vmManager = new VmManager();
-        vmManager.createAndStartVms(2, VmTypes.UbuntuMonitored);
+        vmManager.createAndStartVms(2, VmTypes.DSL);
     }
 }
