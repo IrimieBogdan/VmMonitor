@@ -1,3 +1,8 @@
+package com.cloud_burst;
+
+import com.cloud_burst.vm_manager.VmManager;
+import com.cloud_burst.vm_manager.VmTypes;
+
 /**
  * Created by constantin on 09.06.2014.
  */

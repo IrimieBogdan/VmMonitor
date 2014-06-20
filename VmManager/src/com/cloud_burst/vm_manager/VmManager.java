@@ -1,3 +1,5 @@
+package com.cloud_burst.vm_manager;
+
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -30,6 +32,12 @@ public class VmManager {
     public void stopAllVms() {
         for (VirtualMachine vm : vms) {
             vm.stopVm();
+        }
+    }
+
+    public void deleteAllVms() {
+        for (VirtualMachine vm : vms) {
+            vm.deleteVm();
         }
     }
 
