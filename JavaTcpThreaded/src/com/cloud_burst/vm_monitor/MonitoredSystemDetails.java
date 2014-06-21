@@ -1,4 +1,4 @@
-package com.vmMonitor;
+package com.cloud_burst.vm_monitor;
 
 public class MonitoredSystemDetails {
 
