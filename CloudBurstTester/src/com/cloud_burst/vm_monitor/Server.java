@@ -1,7 +1,7 @@
 package com.cloud_burst.vm_monitor;
 
 import java.io.IOException;
-import java.net.ServerSocket;
+import java.lang.*;import java.lang.Override;import java.lang.String;import java.lang.System;import java.lang.Thread;import java.net.ServerSocket;
 
 /**
  * Manages a server that will listen for incoming connections and start a thread for every new connection
@@ -98,7 +98,7 @@ public class Server {
         server.startServerAsync();
         try {
             Thread.sleep(10000);
-        } catch (InterruptedException e) {
+        } catch (java.lang.InterruptedException e) {
             e.printStackTrace();
         }
         server.stopServer();

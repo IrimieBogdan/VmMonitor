@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.Socket;
+import java.lang.*;import java.lang.Override;import java.lang.String;import java.lang.StringBuilder;import java.lang.System;import java.lang.Thread;import java.net.Socket;
 import java.util.LinkedList;
 
 /**
@@ -44,7 +44,7 @@ public class SystemDetailsReader extends Thread {
             BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             String input = null;
-            StringBuilder msg = new StringBuilder();
+            java.lang.StringBuilder msg = new StringBuilder();
             while ((input = in.readLine()) != null) {
                 msg.append(input);
             }

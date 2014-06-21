@@ -1,6 +1,6 @@
 package com.cloud_burst.vm_manager;
 
-/**
+import java.lang.String;import java.lang.System; /**
  * Manipulate VM, offer support for basic operations.
  */
 public class VirtualMachine {

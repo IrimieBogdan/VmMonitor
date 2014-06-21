@@ -2,7 +2,7 @@ package com.cloud_burst.vm_manager;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStreamReader;import java.lang.*;import java.lang.Process;import java.lang.Runtime;import java.lang.String;import java.lang.StringBuffer;import java.lang.System;
 
 /**
  * Executes commands on terminal.
@@ -29,7 +29,7 @@ public class ExecuteCommand {
         catch (IOException e) {
             e.printStackTrace();
         }
-        catch (InterruptedException e) {
+        catch (java.lang.InterruptedException e) {
             System.err.println("The process was interrupted!");
         }
 

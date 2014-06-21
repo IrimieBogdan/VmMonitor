@@ -1,7 +1,7 @@
 package com.cloud_burst.vm_monitor;
 
 
-public class MonitoredClient {
+import java.lang.Override;import java.lang.String;public class MonitoredClient {
 
     /**
      * Keep details related to the internal state of the VM
