@@ -3,10 +3,22 @@ package com.cloud_burst.vm_monitor;
 import java.io.IOException;
 import java.net.ServerSocket;
 
+/**
+ * Manages a server that will listen for incoming connections and start a thread for every new connection
+ */
 public class Server {
 
+    /**
+     * Used to create a singleton
+     */
     private static Server instance = null;
+    /**
+     * Server socket
+     */
     private static ServerSocket listener;
+    /**
+     * Keep the state of the server (running / non_running)
+     */
     private static boolean serverRunning;
 
     private Server(int port) throws IOException {
@@ -14,6 +26,13 @@ public class Server {
         serverRunning = false;
     }
 
+    /**
+     * Singleton, Ensure only one instance is created
+     *
+     * @param port          Port to listen on for new connections
+     * @return              A server instance
+     * @throws IOException
+     */
     public static Server createServer(int port) throws IOException {
         if (instance == null) {
             return new Server(port);
@@ -21,14 +40,19 @@ public class Server {
         return instance;
     }
 
-    public void startServer() {
+    /**
+     * Start server if it is not already started
+     */
+    public void startServerAsync() {
         if (serverRunning == false) {
             this.startListening();
             serverRunning = true;
         }
     }
 
-
+    /**
+     * Stop server by closing the server socket
+     */
     public void stopServer() {
         try {
             listener.close();
@@ -37,6 +61,9 @@ public class Server {
         }
     }
 
+    /**
+     * Non blocking wait for client connections, for every new client starts a new thread
+     */
     private void startListening() {
         System.out.println("Server is waiting for connections...");
         Thread thread = new Thread() {
@@ -61,9 +88,14 @@ public class Server {
         thread.start();
     }
 
+    /**
+     * Local test for Server class
+     * @param args  Not used
+     * @throws      IOException  If server creation encounter errors
+     */
     public static void main(String[] args) throws IOException {
         Server server = Server.createServer(8888);
-        server.startServer();
+        server.startServerAsync();
         try {
             Thread.sleep(10000);
         } catch (InterruptedException e) {

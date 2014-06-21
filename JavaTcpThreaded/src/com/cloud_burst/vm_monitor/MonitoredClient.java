@@ -1,13 +1,20 @@
 package com.cloud_burst.vm_monitor;
 
-/**
- * Created by constantin on 21.06.2014.
- */
+
 public class MonitoredClient {
 
+    /**
+     * Keep details related to the internal state of the VM
+     */
     private MonitoredSystemDetails msd;
+    /**
+     * Keep ip from where the VM called
+     */
     private String ip;
-    private int secondsToStart;
+    /**
+     * Keep time in seconds from the moment the start Vm command was initiated
+     */
+    private long secondsToStart;
 
     public MonitoredClient(MonitoredSystemDetails msd, String ip) {
         this.msd = msd;
@@ -15,7 +22,7 @@ public class MonitoredClient {
         secondsToStart = -1;
     }
 
-    public int getSecondsToStart() {
+    public long getSecondsToStart() {
         return secondsToStart;
     }
 
