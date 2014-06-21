@@ -1,7 +1,7 @@
 package com.cloud_burst.vm_manager;
 
 /**
- * Created by constantin on 08.06.2014.
+ * Types of VM-s that can be manipulated.
  */
 public enum VmTypes {
     Ubuntu, DSL

@@ -4,7 +4,16 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * Executes commands on terminal.
+ */
 public class ExecuteCommand {
+    /**
+     * Execute given command in terminal.
+     *
+     * @param command   Command to be executed in terminal.
+     * @return          Output from terminal.
+     */
     public static String exec(String command) {
         StringBuffer output = new StringBuffer();
         Process p;
