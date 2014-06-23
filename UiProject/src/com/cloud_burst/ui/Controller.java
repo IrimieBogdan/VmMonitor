@@ -18,15 +18,28 @@ import java.util.List;
 
 public class Controller {
 
+    /**
+     * Shows how many VMs have started.
+     */
     public Label vmStatus;
+
+    /**
+     * Number of VMs to start.
+     */
     public TextField numberOfVms;
 
+    /**
+     * Combo box with VM types.
+     */
     @FXML
     private ComboBox<VmTypes> cbo_vmsType;
 
+    /**
+     * Add types of VM to combo box.
+     * Remove old values and add values from enum.
+     */
     @FXML
     void initialize() {
-        // remove old values and add values from enum
         cbo_vmsType.getItems().clear();
         cbo_vmsType.getItems().addAll(VmTypes.values());
     }
@@ -52,6 +65,9 @@ public class Controller {
         vmManager.createAndStartVmsAsync(2, VmTypes.DSL);
     }
 
+    /**
+     * Time the time needed for a VM to be created and started.
+     */
     public void timeToStart() {
         List<MonitoredClient> clientDetails = SystemDetailsReader.getMonitoredClient();
 
@@ -72,7 +88,7 @@ public class Controller {
 
                     try {
                         Thread.sleep(1000);
-                        timer += 1;
+                        timer++;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
