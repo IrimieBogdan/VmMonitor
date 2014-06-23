@@ -58,29 +58,39 @@ public class Controller {
         Task task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
+                int oldClientCounter = 0;
+                long timer = 0;
                 while (true) {
                     int clientCounter = clientDetails.size();
 
-                    // update ui thread
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            vmStatus.setText(clientCounter + " / " + numberOfVms.getText());
-                        }
-                    });
+                    // set elapsed time from start command to finish
+                    for (int clientIndex = oldClientCounter; clientIndex < clientCounter; clientIndex++) {
+                        clientDetails.get(clientIndex).setSecondsToStart(timer);
+                    }
+
+                    updateCounter(clientCounter);
 
                     try {
-                        Thread.sleep(100);
+                        Thread.sleep(1000);
+                        timer += 1;
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
-
                 }
             }
         };
-        
+
         Thread th = new Thread(task);
         th.start();
+    }
+
+    /**
+     * Update Ui thread with number of clients started.
+     *
+     * @param clientsStarted    Number of started clients.
+     */
+    public void updateCounter(int clientsStarted) {
+        Platform.runLater(() -> vmStatus.setText(clientsStarted + " / " + numberOfVms.getText()));
     }
 }

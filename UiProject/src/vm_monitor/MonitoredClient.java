@@ -26,7 +26,7 @@ public class MonitoredClient {
         return secondsToStart;
     }
 
-    public void setSecondsToStart(int secondsToStart) {
+    public void setSecondsToStart(long secondsToStart) {
         this.secondsToStart = secondsToStart;
     }
 
