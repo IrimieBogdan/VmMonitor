@@ -35,7 +35,7 @@ public class Server {
      */
     public static Server createServer(int port) throws IOException {
         if (instance == null) {
-            return new Server(port);
+            instance =  new Server(port);
         }
         return instance;
     }
@@ -44,7 +44,7 @@ public class Server {
      * Start server if it is not already started
      */
     public void startServerAsync() {
-        if (serverRunning == false) {
+        if (!serverRunning) {
             this.startListening();
             serverRunning = true;
         }
