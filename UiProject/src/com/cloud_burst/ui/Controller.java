@@ -62,7 +62,20 @@ public class Controller {
 
         server.startServerAsync();
         timeToStart();
-        vmManager.createAndStartVmsAsync(2, VmTypes.DSL);
+
+        int vmNumber = 0;
+        VmTypes vmsType = null;
+        try{
+            vmNumber = Integer.parseInt(numberOfVms.getText());
+        }
+        catch (NumberFormatException e) {
+            System.err.println("Value is not a number");
+        }
+        vmsType =  cbo_vmsType.getValue();
+
+        if (vmsType != null && vmNumber != 0) {
+            vmManager.createAndStartVmsAsync(vmNumber, vmsType);
+        }
     }
 
     /**
