@@ -66,7 +66,7 @@ public class Controller {
     }
 
     /**
-     * Time the time needed for a VM to be created and started.
+     * Measure the time needed for a VM to be created and started with maximum of 1 second error.
      */
     public void timeToStart() {
         List<MonitoredClient> clientDetails = SystemDetailsReader.getMonitoredClient();
@@ -102,7 +102,7 @@ public class Controller {
     }
 
     /**
-     * Update Ui thread with number of clients started.
+     * Update Ui thread with number of started clients.
      *
      * @param clientsStarted    Number of started clients.
      */
