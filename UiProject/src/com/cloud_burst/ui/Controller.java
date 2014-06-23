@@ -53,7 +53,10 @@ public class Controller {
      */
     public void startVms(ActionEvent actionEvent) {
 
+        int vmNumber = 0;
+        VmTypes vmsType = null;
         Server server = null;
+
         try {
             server = Server.createServer(8888);
         } catch (IOException e) {
@@ -61,10 +64,7 @@ public class Controller {
         }
 
         server.startServerAsync();
-        timeToStart();
 
-        int vmNumber = 0;
-        VmTypes vmsType = null;
         try{
             vmNumber = Integer.parseInt(numberOfVms.getText());
         }
@@ -74,6 +74,7 @@ public class Controller {
         vmsType =  cbo_vmsType.getValue();
 
         if (vmsType != null && vmNumber != 0) {
+            timeToStart(vmNumber);
             vmManager.createAndStartVmsAsync(vmNumber, vmsType);
         }
     }
@@ -81,23 +82,23 @@ public class Controller {
     /**
      * Measure the time needed for a VM to be created and started with maximum of 1 second error.
      */
-    public void timeToStart() {
+    public void timeToStart(int totalVmNumber) {
         List<MonitoredClient> clientDetails = SystemDetailsReader.getMonitoredClient();
 
         Task task = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                int oldClientCounter = 0;
+                int oldStartedVms = 0;
                 long timer = 0;
                 while (true) {
-                    int clientCounter = clientDetails.size();
+                    int startedVms = clientDetails.size();
 
                     // set elapsed time from start command to finish
-                    for (int clientIndex = oldClientCounter; clientIndex < clientCounter; clientIndex++) {
+                    for (int clientIndex = oldStartedVms; clientIndex < startedVms; clientIndex++) {
                         clientDetails.get(clientIndex).setSecondsToStart(timer);
                     }
 
-                    updateCounter(clientCounter);
+                    updateCounter(startedVms, totalVmNumber);
 
                     try {
                         Thread.sleep(1000);
@@ -119,7 +120,7 @@ public class Controller {
      *
      * @param clientsStarted    Number of started clients.
      */
-    public void updateCounter(int clientsStarted) {
-        Platform.runLater(() -> vmStatus.setText(clientsStarted + " / " + numberOfVms.getText()));
+    public void updateCounter(int clientsStarted, int totalClients) {
+        Platform.runLater(() -> vmStatus.setText(clientsStarted + " / " + totalClients));
     }
 }
