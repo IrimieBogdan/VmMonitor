@@ -29,4 +29,14 @@
     <Button text="Start" onAction="#startVms" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
     <Label text="default" fx:id="vmStatus" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
 
+    <TableView fx:id="table_vmDetails" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="4">
+        <columns>
+            <TableColumn text="VmNr"></TableColumn>
+            <TableColumn text="CPU"></TableColumn>
+            <TableColumn text="Memory"></TableColumn>
+            <TableColumn text="Ip"></TableColumn>
+            <TableColumn text="Time"></TableColumn>
+        </columns>
+    </TableView>
+
 </GridPane>
