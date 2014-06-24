@@ -1,5 +1,6 @@
 package vm_manager;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -52,10 +53,21 @@ public class VmManager {
     /**
      * Delete all VMs from the VmManager list.
      */
-    public void deleteAllVms() {
-        for (VirtualMachine vm : vms) {
-            vm.deleteVm();
-        }
+    public void deleteAllVmsAsync() {
+        Thread thread= new Thread() {
+            @Override
+            public void run() {
+                Iterator<VirtualMachine> vmIterator =vms.iterator();
+                while (vmIterator.hasNext()) {
+                    VirtualMachine vm = vmIterator.next();
+                    vm.stopVm();
+                    vm.deleteVm();
+                    vmIterator.remove();
+                }
+
+            }
+        };
+        thread.start();
     }
 
     /**

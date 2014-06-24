@@ -145,4 +145,10 @@ public class Controller {
     public void updateCounter(int clientsStarted, int totalClients) {
         Platform.runLater(() -> vmStatus.setText(clientsStarted + " / " + totalClients));
     }
+
+    public void deleteAllVms(ActionEvent actionEvent) {
+        vmManager.deleteAllVmsAsync();
+        SystemDetailsReader.getMonitoredClient().clear();
+        startedVmDetails.clear();
+    }
 }

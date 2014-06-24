@@ -63,4 +63,5 @@
         </columns>
     </TableView>
 
+    <Button text="Delete" onAction="#deleteAllVms" GridPane.columnIndex="4" GridPane.rowIndex="1" />
 </GridPane>
