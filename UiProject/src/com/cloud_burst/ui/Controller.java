@@ -104,8 +104,9 @@ public class Controller {
             protected Void call() throws Exception {
                 int oldStartedVms = 0;
                 long timer = 0;
-                while (true) {
-                    int startedVms = clientDetails.size();
+                int startedVms = 0;
+                while (startedVms < totalVmNumber) {
+                    startedVms = clientDetails.size();
 
                     // set elapsed time from start command to finish
                     for (int clientIndex = oldStartedVms; clientIndex < startedVms; clientIndex++) {
@@ -130,6 +131,7 @@ public class Controller {
                     }
 
                 }
+                return null;
             }
         };
 
