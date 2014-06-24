@@ -1,11 +1,14 @@
 package com.cloud_burst.ui;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import vm_manager.VmManager;
 import vm_manager.VmTypes;
@@ -35,6 +38,15 @@ public class Controller {
     private ComboBox<VmTypes> cbo_vmsType;
 
     /**
+     * Stores deta related to started VMs.
+     */
+    @FXML
+    public TableView table_vmDetails;
+
+    private ObservableList<ClientVmDetails> startedVmDetails = FXCollections.observableArrayList();
+
+
+    /**
      * Add types of VM to combo box.
      * Remove old values and add values from enum.
      */
@@ -42,6 +54,8 @@ public class Controller {
     void initialize() {
         cbo_vmsType.getItems().clear();
         cbo_vmsType.getItems().addAll(VmTypes.values());
+
+        table_vmDetails.setItems(startedVmDetails);
     }
 
     private VmManager vmManager = new VmManager();
@@ -95,8 +109,16 @@ public class Controller {
 
                     // set elapsed time from start command to finish
                     for (int clientIndex = oldStartedVms; clientIndex < startedVms; clientIndex++) {
-                        clientDetails.get(clientIndex).setSecondsToStart(timer);
+                        MonitoredClient mc = clientDetails.get(clientIndex);
+                        mc.setSecondsToStart(timer);
+
+                        long cpuCount = mc.getMonitoredSystemDetails().getProcessors();
+                        long memory = mc.getMonitoredSystemDetails().getMemory();
+                        String ip = mc.getIp();
+                        long time = mc.getSecondsToStart();
+                        startedVmDetails.add(new ClientVmDetails(cpuCount, memory, ip, time));
                     }
+                    oldStartedVms = startedVms;
 
                     updateCounter(startedVms, totalVmNumber);
 

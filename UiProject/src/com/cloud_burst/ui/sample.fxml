@@ -31,11 +31,35 @@
 
     <TableView fx:id="table_vmDetails" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="4">
         <columns>
-            <TableColumn text="VmNr"></TableColumn>
-            <TableColumn text="CPU"></TableColumn>
-            <TableColumn text="Memory"></TableColumn>
-            <TableColumn text="Ip"></TableColumn>
-            <TableColumn text="Time"></TableColumn>
+            <TableColumn text="VmNr">
+                <cellValueFactory>
+                    <PropertyValueFactory property="vmNumber" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="CPU">
+                <cellValueFactory>
+                    <PropertyValueFactory property="cpuCount" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Memory">
+                <cellValueFactory>
+                    <PropertyValueFactory property="memory" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Ip">
+                <cellValueFactory>
+                    <PropertyValueFactory property="ip" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Time">
+                <cellValueFactory>
+                    <PropertyValueFactory property="time" />
+                </cellValueFactory>
+            </TableColumn>
         </columns>
     </TableView>
 
