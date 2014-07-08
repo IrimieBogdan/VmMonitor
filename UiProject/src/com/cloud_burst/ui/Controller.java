@@ -32,6 +32,11 @@ public class Controller {
     public TextField numberOfVms;
 
     /**
+     * Elapsed time from start action
+     */
+    public Label elapsedTime;
+
+    /**
      * Combo box with VM types.
      */
     @FXML
@@ -122,6 +127,7 @@ public class Controller {
                     oldStartedVms = startedVms;
 
                     updateCounter(startedVms, totalVmNumber);
+                    updateTime(timer);
 
                     try {
                         Thread.sleep(1000);
@@ -136,6 +142,7 @@ public class Controller {
         };
 
         Thread th = new Thread(task);
+        th.setDaemon(true);
         th.start();
     }
 
@@ -145,12 +152,29 @@ public class Controller {
      * @param clientsStarted    Number of started clients.
      */
     public void updateCounter(int clientsStarted, int totalClients) {
-        Platform.runLater(() -> vmStatus.setText(clientsStarted + " / " + totalClients));
+        Platform.runLater(() -> vmStatus.setText(clientsStarted + " / " + totalClients + " VMs"));
     }
 
+    /**
+     * Update UI thread with elapsed time.
+     *
+     * @param time Elapsed time
+     */
+    public void updateTime(long time) {
+        Platform.runLater(() -> elapsedTime.setText(Long.toString(time) + "s"));
+    }
+
+    /**
+     * Delete all vm.
+     *
+     * @param actionEvent
+     */
     public void deleteAllVms(ActionEvent actionEvent) {
         vmManager.deleteAllVmsAsync();
         SystemDetailsReader.getMonitoredClient().clear();
         startedVmDetails.clear();
+
+        updateCounter(0,0);
+        updateTime(0);
     }
 }

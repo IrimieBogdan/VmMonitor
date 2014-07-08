@@ -85,6 +85,7 @@ public class Server {
                 }
             }
         };
+        thread.setDaemon(true);
         thread.start();
     }
 

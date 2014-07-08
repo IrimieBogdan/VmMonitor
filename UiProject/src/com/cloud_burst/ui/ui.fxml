@@ -27,9 +27,12 @@
     </ComboBox>
 
     <Button text="Start" onAction="#startVms" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
-    <Label text="default" fx:id="vmStatus" GridPane.columnIndex="3" GridPane.rowIndex="2"/>
+    <Button text="Delete" onAction="#deleteAllVms" GridPane.columnIndex="4" GridPane.rowIndex="1" />
 
-    <TableView fx:id="table_vmDetails" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="4">
+    <Label text="0 / 0 VMs" fx:id="vmStatus" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+    <Label text="0" fx:id="elapsedTime" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+
+    <TableView fx:id="table_vmDetails" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="5">
         <columns>
             <TableColumn text="VmNr">
                 <cellValueFactory>
@@ -63,5 +66,4 @@
         </columns>
     </TableView>
 
-    <Button text="Delete" onAction="#deleteAllVms" GridPane.columnIndex="4" GridPane.rowIndex="1" />
 </GridPane>

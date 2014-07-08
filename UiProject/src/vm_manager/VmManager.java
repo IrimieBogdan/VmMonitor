@@ -90,6 +90,7 @@ public class VmManager {
                 }
             }
         };
+        thread.setDaemon(true);
         thread.start();
     }
 
