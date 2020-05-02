@@ -1,4 +1,4 @@
-package vm_manager;
+package com.cloud_burst.vm_manager;
 
 import java.util.Iterator;
 import java.util.LinkedList;

@@ -1,4 +1,4 @@
-package vm_manager;
+package com.cloud_burst.vm_manager;
 
 public class Client {
     public static void main(String[] args) {

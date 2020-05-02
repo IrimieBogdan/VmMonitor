@@ -1,4 +1,4 @@
-package vm_monitor;
+package com.cloud_burst.vm_monitor;
 
 
 public class MonitoredClient {

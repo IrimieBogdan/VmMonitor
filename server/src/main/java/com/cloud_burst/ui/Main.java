@@ -9,8 +9,9 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("ui.fxml"));
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("ui.fxml"));
+
         primaryStage.setTitle("Cloud Burst Tester");
         primaryStage.setScene(new Scene(root, 600, 500));
         primaryStage.show();
@@ -21,3 +22,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+

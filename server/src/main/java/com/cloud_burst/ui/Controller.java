@@ -10,11 +10,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import vm_manager.VmManager;
-import vm_manager.VmTypes;
-import vm_monitor.MonitoredClient;
-import vm_monitor.Server;
-import vm_monitor.SystemDetailsReader;
+import com.cloud_burst.vm_manager.VmManager;
+import com.cloud_burst.vm_manager.VmTypes;
+import com.cloud_burst.vm_monitor.MonitoredClient;
+import com.cloud_burst.vm_monitor.Server;
+import com.cloud_burst.vm_monitor.SystemDetailsReader;
 
 import java.io.IOException;
 import java.util.List;

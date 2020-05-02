@@ -1,4 +1,4 @@
-package vm_monitor;
+package com.cloud_burst.vm_monitor;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -31,7 +31,7 @@ public class Server {
      *
      * @param port          Port to listen on for new connections
      * @return              A server instance
-     * @throws java.io.IOException
+     * @throws IOException
      */
     public static Server createServer(int port) throws IOException {
         if (instance == null) {
@@ -92,7 +92,7 @@ public class Server {
     /**
      * Local test for Server class
      * @param args  Not used
-     * @throws      java.io.IOException  If server creation encounter errors
+     * @throws      IOException  If server creation encounter errors
      */
     public static void main(String[] args) throws IOException {
         Server server = Server.createServer(8888);

@@ -1,4 +1,6 @@
-package vm_manager;
+package com.cloud_burst.vm_manager;
+
+import java.io.File;
 
 /**
  * Manipulate VM, offer support for basic operations.
@@ -26,7 +28,9 @@ public class VirtualMachine {
      * @return  VBoxManage output.
      */
     public String startVm() {
-        return ExecuteCommand.exec("sh startVm.sh " + name);
+        String scriptPath = geFilePathFromResource("startVm.sh");
+
+        return ExecuteCommand.exec("sh " + scriptPath + " " + name);
     }
 
     /**
@@ -35,7 +39,9 @@ public class VirtualMachine {
      * @return  VBoxManage output.
      */
     public String deleteVm() {
-        return ExecuteCommand.exec("sh deleteVm.sh " + name);
+        String scriptPath = geFilePathFromResource("deleteVm.sh");
+
+        return ExecuteCommand.exec("sh " + scriptPath + " " + name);
     }
 
     /**
@@ -44,7 +50,9 @@ public class VirtualMachine {
      * @return  VBoxManage output.
      */
     public String stopVm() {
-        return ExecuteCommand.exec("sh stopVm.sh " + name);
+        String scriptPath = geFilePathFromResource("stopVm.sh");
+
+        return ExecuteCommand.exec("sh " + scriptPath + " " + name);
     }
 
     public String getName() {
@@ -58,7 +66,21 @@ public class VirtualMachine {
      * @return  VBoxManage output.
      */
     private String crateVmFromTemplate(VmTypes typeOfVm) {
-        return ExecuteCommand.exec("sh cloneVm.sh " + typeOfVm.toString() + " " + name);
+        String scriptPath = geFilePathFromResource("cloneVm.sh");
+
+        return ExecuteCommand.exec("sh " + scriptPath + " " + typeOfVm.toString() + " " + name);
     }
 
+    /**
+     * Build path for files in resources directory.
+     *
+     * @param fileName the name of the file for which we want the path from resources.
+     * @return path from resources directory
+     */
+    private String geFilePathFromResource(String fileName) {
+        File file = new File(
+                getClass().getClassLoader().getResource(fileName).getFile()
+        );
+        return  file.getAbsolutePath();
+    }
 }

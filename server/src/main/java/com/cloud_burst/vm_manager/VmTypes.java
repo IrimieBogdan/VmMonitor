@@ -1,4 +1,4 @@
-package vm_manager;
+package com.cloud_burst.vm_manager;
 
 /**
  * Types of VM-s that can be manipulated.

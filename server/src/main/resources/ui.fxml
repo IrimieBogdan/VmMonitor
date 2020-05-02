@@ -1,0 +1,69 @@
+<?import java.lang.String?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<GridPane fx:controller="com.cloud_burst.ui.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+
+    <Label text="Number of Vms:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <TextField fx:id="numberOfVms" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+    <Label text="Type of VMs:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+    <ComboBox fx:id="cbo_vmsType" GridPane.columnIndex="1" GridPane.rowIndex="2">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="VmType1" />
+                <String fx:value="VmType2" />
+                <String fx:value="VmType3" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <Button text="Start" onAction="#startVms" GridPane.columnIndex="3" GridPane.rowIndex="1"/>
+    <Button text="Delete" onAction="#deleteAllVms" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+
+    <Label text="0 / 0 VMs" fx:id="vmStatus" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+    <Label text="0" fx:id="elapsedTime" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+
+    <TableView fx:id="table_vmDetails" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="5">
+        <columns>
+            <TableColumn text="VmNr">
+                <cellValueFactory>
+                    <PropertyValueFactory property="vmNumber" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="CPU">
+                <cellValueFactory>
+                    <PropertyValueFactory property="cpuCount" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Memory">
+                <cellValueFactory>
+                    <PropertyValueFactory property="memory" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Ip">
+                <cellValueFactory>
+                    <PropertyValueFactory property="ip" />
+                </cellValueFactory>
+            </TableColumn>
+
+            <TableColumn text="Time">
+                <cellValueFactory>
+                    <PropertyValueFactory property="time" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+    </TableView>
+
+</GridPane>

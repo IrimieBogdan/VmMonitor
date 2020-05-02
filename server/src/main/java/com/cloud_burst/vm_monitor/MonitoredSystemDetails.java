@@ -1,4 +1,4 @@
-package vm_monitor;
+package com.cloud_burst.vm_monitor;
 
 /**
  * This class will store details received from the monitored VMs
